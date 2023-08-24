@@ -1,8 +1,8 @@
+import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/artists/city_change_screen.dart';
-import 'package:antaji_app/features/artists/portfolio/portfolio_screen.dart';
+import 'package:antaji_app/features/artists/screens/city_change_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/portfolio_screen.dart';
 
-import '../../common/widgets/custom_button.dart';
 
 class ArtistsScreen extends StatefulWidget {
   const ArtistsScreen({super.key});

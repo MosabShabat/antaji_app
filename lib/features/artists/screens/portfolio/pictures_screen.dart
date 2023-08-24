@@ -1,5 +1,5 @@
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/artists/portfolio/full_screen_pictures_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/full_screen_pictures_screen.dart';
 
 class picturesScreen extends StatefulWidget {
   const picturesScreen({super.key});

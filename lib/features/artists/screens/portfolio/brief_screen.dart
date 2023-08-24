@@ -1,7 +1,7 @@
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/artists/portfolio/reviews_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/reviews_screen.dart';
 
-import '../../../common/widgets/custom_button.dart';
+import '../../../../common/widgets/custom_button.dart';
 
 class BriefScreen extends StatefulWidget {
   const BriefScreen({super.key});

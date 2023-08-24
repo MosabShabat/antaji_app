@@ -1,10 +1,9 @@
 import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/constant/const.dart';
+import 'package:antaji_app/features/artists/screens/city_change_screen.dart';
 import 'package:antaji_app/features/home_page/screens/search/research_results_screen.dart';
 import 'package:antaji_app/features/home_page/screens/search/search_history_screen.dart';
 import 'package:lottie/lottie.dart';
-
-import '../../../artists/city_change_screen.dart';
 
 class searchScreen extends StatefulWidget {
   const searchScreen({super.key});

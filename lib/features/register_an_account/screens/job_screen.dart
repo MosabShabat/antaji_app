@@ -1,7 +1,7 @@
-import 'package:antaji_app/features/register_an_account/chat_screen.dart';
 
-import '../../common/widgets/custom_button.dart';
-import '../../constant/const.dart';
+import 'package:antaji_app/common/widgets/custom_button.dart';
+import 'package:antaji_app/features/register_an_account/screens/chat_screen.dart';
+import '../../../constant/const.dart';
 
 class jobScreen extends StatefulWidget {
   const jobScreen({super.key});

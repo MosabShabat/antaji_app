@@ -1,6 +1,6 @@
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/artists/portfolio/pictures_screen.dart';
-import 'package:antaji_app/features/artists/portfolio/videos_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/pictures_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/videos_screen.dart';
 
 class exhibitionScreen extends StatefulWidget {
   const exhibitionScreen({super.key});

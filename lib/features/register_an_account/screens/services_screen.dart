@@ -1,7 +1,9 @@
-import 'package:antaji_app/features/register_an_account/job_screen.dart';
 
-import '../../common/widgets/custom_button.dart';
-import '../home_page/controller/home_page_controller.dart';
+
+import 'package:antaji_app/common/widgets/custom_button.dart';
+import 'package:antaji_app/features/home_page/controller/home_page_controller.dart';
+import 'package:antaji_app/features/register_an_account/screens/job_screen.dart';
+
 
 class ServicesScreen extends StatefulWidget {
   const ServicesScreen({super.key});

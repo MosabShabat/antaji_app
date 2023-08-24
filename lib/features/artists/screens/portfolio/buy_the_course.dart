@@ -1,7 +1,7 @@
 import 'package:antaji_app/constant/const.dart';
 
-import '../../../common/widgets/cart_pay_ment.dart';
-import '../../../common/widgets/custom_button.dart';
+import '../../../../common/widgets/cart_pay_ment.dart';
+import '../../../../common/widgets/custom_button.dart';
 import 'course_details_screen.dart';
 
 class BuyTheCourseScreen extends StatefulWidget {

@@ -1,8 +1,7 @@
+import 'package:antaji_app/features/artists/screens/city_change_screen.dart';
 import 'package:antaji_app/features/home_page/screens/buying_and_renting_a_product/product_details_screen.dart';
-
 import '../../../common/widgets/custom_button.dart';
 import '../../../constant/const.dart';
-import '../../artists/city_change_screen.dart';
 
 class FilmingLocationsScreen extends StatefulWidget {
   const FilmingLocationsScreen({super.key});

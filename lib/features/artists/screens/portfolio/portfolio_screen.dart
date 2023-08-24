@@ -1,6 +1,6 @@
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/artists/portfolio/brief_screen.dart';
-import 'package:antaji_app/features/artists/portfolio/products_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/brief_screen.dart';
+import 'package:antaji_app/features/artists/screens/portfolio/products_screen.dart';
 
 import 'courses_screen.dart';
 import 'exhibition_screen.dart';

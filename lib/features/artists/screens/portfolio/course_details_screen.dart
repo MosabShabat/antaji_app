@@ -1,6 +1,6 @@
 import 'package:antaji_app/constant/const.dart';
 
-import '../../../common/widgets/custom_button.dart';
+import '../../../../common/widgets/custom_button.dart';
 import 'buy_the_course.dart';
 
 class CourseDetailsScreen extends StatefulWidget {

@@ -1,11 +1,11 @@
+import 'package:antaji_app/features/artists/screens/artists_screen.dart';
 import 'package:antaji_app/features/filming_locations/screens/filming_locations_screen.dart';
 import 'package:antaji_app/features/maps/screens/map_screen.dart';
+import 'package:antaji_app/features/register_an_account/screens/services_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '../../../common/widgets/exit_dialog.dart';
 import '../../../constant/const.dart';
-import '../../artists/artists_screen.dart';
 import '../../home_page/screens/home_page_screen.dart';
-import '../../register_an_account/services_screen.dart';
 import '../controller/home_controller.dart';
 
 class HomeScreen extends StatefulWidget {

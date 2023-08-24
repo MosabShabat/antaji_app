@@ -1,6 +1,6 @@
+import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/constant/const.dart';
 
-import '../../common/widgets/custom_button.dart';
 
 class CityChangeScreen extends StatefulWidget {
   const CityChangeScreen({super.key});

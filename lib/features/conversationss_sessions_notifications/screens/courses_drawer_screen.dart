@@ -1,7 +1,7 @@
 import 'package:antaji_app/constant/const.dart';
 
 import '../../../common/widgets/custom_button.dart';
-import '../../artists/portfolio/course_details_screen.dart';
+import '../../artists/screens/portfolio/course_details_screen.dart';
 
 class coursesDrawerScreen extends StatefulWidget {
   const coursesDrawerScreen({super.key});
