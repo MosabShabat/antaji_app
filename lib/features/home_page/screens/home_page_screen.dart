@@ -13,7 +13,7 @@ import 'buying_and_renting_a_product/product_details_screen.dart';
 
 class HomePage extends StatefulWidget {
   final int page;
-
+  //mosab shabat
   const HomePage({super.key, required this.page});
 
   @override
