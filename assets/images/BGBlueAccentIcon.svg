@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="343" height="354" viewBox="0 0 343 354">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="BG" width="343" height="354" rx="14" transform="translate(16 669)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="BGBlueAccentIcon" transform="translate(-16 -669)" clip-path="url(#clip-path)">
+    <rect id="BG-2" data-name="BG" width="343" height="354" rx="14" transform="translate(16 669)" fill="#e5f3fd"/>
+    <ellipse id="Oval" cx="97" cy="54" rx="97" ry="54" transform="translate(-47.5 628.833)" opacity="0.5" fill="url(#linear-gradient)"/>
+    <ellipse id="Oval-2" data-name="Oval" cx="133.5" cy="62.5" rx="133.5" ry="62.5" transform="translate(146.5 988)" opacity="0.5" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="menu" transform="translate(1 10.5)">
+    <rect id="Rectangle_169" data-name="Rectangle 169" width="30" height="30" transform="translate(-1 -10.5)" fill="none" opacity="0"/>
+    <rect id="bg" width="24" height="25" transform="translate(2 -8.5)" fill="none"/>
+    <path id="icon" d="M.944,17a.945.945,0,0,1,0-1.889H12.255a.945.945,0,1,1,0,1.889Zm0-7.556a.945.945,0,0,1,0-1.889H21.056a.945.945,0,1,1,0,1.889Zm8.8-7.556A.945.945,0,0,1,9.744,0H21.056a.945.945,0,1,1,0,1.889Z" transform="translate(25 13) rotate(180)" fill="#fff"/>
+  </g>
+</svg>

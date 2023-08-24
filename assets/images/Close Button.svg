@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Close_Button" data-name="Close Button" transform="translate(0 -1)">
+    <circle id="Oval" cx="15" cy="15" r="15" transform="translate(0 1)" opacity="0.5"/>
+    <g id="vuesax_outline_trash" data-name="vuesax/outline/trash" transform="translate(-102.139 -181.139)">
+      <g id="trash" transform="translate(108 188)">
+        <path id="Vector" d="M14.282,1.535h-.061A59.992,59.992,0,0,0,2.188,1.383L.635,1.535A.575.575,0,0,1,0,1.017.567.567,0,0,1,.513.393L2.067.24A61.8,61.8,0,0,1,14.335.393a.572.572,0,0,1,.51.624A.564.564,0,0,1,14.282,1.535Z" transform="translate(1.711 3.59)" fill="#fff"/>
+        <path id="Vector-2" data-name="Vector" d="M.572,3.4a.468.468,0,0,1-.1-.008.573.573,0,0,1-.465-.655l.168-1C.3,1.013.465,0,2.24,0h2C6.017,0,6.184,1.051,6.3,1.752l.168.99a.568.568,0,1,1-1.119.19l-.168-.99c-.107-.663-.129-.792-.937-.792h-2c-.807,0-.822.107-.937.784l-.175.99A.571.571,0,0,1,.572,3.4Z" transform="translate(5.901 0.952)" fill="#fff"/>
+        <path id="Vector-3" data-name="Vector" d="M8.234,10.936H3.345C.687,10.936.58,9.467.5,8.279L0,.61A.576.576,0,0,1,.535,0a.577.577,0,0,1,.609.533l.5,7.669c.084,1.158.114,1.592,1.706,1.592H8.234c1.6,0,1.63-.434,1.706-1.592l.5-7.669A.582.582,0,0,1,11.044,0a.572.572,0,0,1,.533.609l-.5,7.669C11,9.467,10.892,10.936,8.234,10.936Z" transform="translate(3.349 6.389)" fill="#fff"/>
+        <path id="Vector-4" data-name="Vector" d="M3.107,1.142H.571A.575.575,0,0,1,0,.571.575.575,0,0,1,.571,0H3.107a.575.575,0,0,1,.571.571A.575.575,0,0,1,3.107,1.142Z" transform="translate(7.296 11.994)" fill="#fff"/>
+        <path id="Vector-5" data-name="Vector" d="M4.379,1.142H.571A.575.575,0,0,1,0,.571.575.575,0,0,1,.571,0H4.379A.575.575,0,0,1,4.95.571.575.575,0,0,1,4.379,1.142Z" transform="translate(6.664 8.948)" fill="#fff"/>
+        <path id="Vector-6" data-name="Vector" d="M0,0H18.277V18.277H0Z" fill="none" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_outline_shopping-cart" data-name="vuesax/outline/shopping-cart" transform="translate(-622 -188)">
+    <g id="shopping-cart">
+      <path id="Vector" d="M16.94,16.5H6.29a3.563,3.563,0,0,1-3.54-3.85l.83-9.96A1.1,1.1,0,0,0,2.48,1.5H.75A.755.755,0,0,1,0,.75.755.755,0,0,1,.75,0H2.49A2.585,2.585,0,0,1,4.98,1.88H17.47A3.566,3.566,0,0,1,20.09,3a3.524,3.524,0,0,1,.93,2.69l-.54,7.5A3.588,3.588,0,0,1,16.94,16.5ZM5.03,3.37l-.78,9.4a2.041,2.041,0,0,0,2.04,2.22H16.94A2.133,2.133,0,0,0,19,13.07l.54-7.5a2.041,2.041,0,0,0-2.06-2.21H5.03Z" transform="translate(623.25 189.25)" fill="#fff"/>
+      <path id="Vector-2" data-name="Vector" d="M2,4A2,2,0,1,1,4,2,2.006,2.006,0,0,1,2,4ZM2,1.5a.5.5,0,1,0,.5.5A.5.5,0,0,0,2,1.5Z" transform="translate(636.25 206.75)" fill="#fff"/>
+      <path id="Vector-3" data-name="Vector" d="M2,4A2,2,0,1,1,4,2,2.006,2.006,0,0,1,2,4ZM2,1.5a.5.5,0,1,0,.5.5A.5.5,0,0,0,2,1.5Z" transform="translate(628.25 206.75)" fill="#fff"/>
+      <path id="Vector-4" data-name="Vector" d="M12.75,1.5H.75A.755.755,0,0,1,0,.75.755.755,0,0,1,.75,0h12a.755.755,0,0,1,.75.75A.755.755,0,0,1,12.75,1.5Z" transform="translate(630.25 195.25)" fill="#fff"/>
+      <path id="Vector-5" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(622 188)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

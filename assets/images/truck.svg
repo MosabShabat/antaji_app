@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="truck" transform="translate(-172 -181)">
+    <g id="Ellipse_520" data-name="Ellipse 520" transform="translate(172 181)" fill="#fff" stroke="#ccc" stroke-width="1">
+      <circle cx="20" cy="20" r="20" stroke="none"/>
+      <circle cx="20" cy="20" r="19.5" fill="none"/>
+    </g>
+    <g id="vuesax_outline_box" data-name="vuesax/outline/box" transform="translate(-376 1)">
+      <g id="box">
+        <path id="Vector" d="M9.583,6.613a.746.746,0,0,1-.38-.1L.373,1.4A.753.753,0,0,1,1.133.1l8.45,4.89,8.4-4.86a.761.761,0,0,1,1.03.27.761.761,0,0,1-.27,1.03l-8.77,5.08A.94.94,0,0,1,9.583,6.613Z" transform="translate(558.417 194.687)" fill="#292d32"/>
+        <path id="Vector-2" data-name="Vector" d="M.75,10.57A.755.755,0,0,1,0,9.82V.75A.755.755,0,0,1,.75,0,.755.755,0,0,1,1.5.75V9.82A.755.755,0,0,1,.75,10.57Z" transform="translate(567.25 199.79)" fill="#292d32"/>
+        <path id="Vector-3" data-name="Vector" d="M10.36,21.5a5.137,5.137,0,0,1-2.44-.57L2.58,17.96A5.443,5.443,0,0,1,0,13.57V7.92A5.457,5.457,0,0,1,2.58,3.53L7.92.57a5.507,5.507,0,0,1,4.88,0l5.34,2.97a5.443,5.443,0,0,1,2.58,4.39v5.65a5.457,5.457,0,0,1-2.58,4.39L12.8,20.93A5.137,5.137,0,0,1,10.36,21.5Zm0-20a3.685,3.685,0,0,0-1.71.38L3.31,4.85A4.02,4.02,0,0,0,1.5,7.93v5.65a4.036,4.036,0,0,0,1.81,3.08l5.34,2.97a4.014,4.014,0,0,0,3.42,0l5.34-2.97a4.02,4.02,0,0,0,1.81-3.08V7.93a4.036,4.036,0,0,0-1.81-3.08L12.07,1.88A3.685,3.685,0,0,0,10.36,1.5Z" transform="translate(557.64 189.25)" fill="#292d32"/>
+        <path id="Vector-4" data-name="Vector" d="M10.243,10.623a.755.755,0,0,1-.75-.75V6.653L.373,1.393A.742.742,0,0,1,.1.373.74.74,0,0,1,1.123.1l9.49,5.48a.752.752,0,0,1,.38.65v3.66A.752.752,0,0,1,10.243,10.623Z" transform="translate(562.757 191.367)" fill="#292d32"/>
+        <path id="Vector-5" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(556 188)" fill="none" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="73" height="103.001" viewBox="0 0 73 103.001">
+  <g id="Logo" transform="translate(-153 -321.999)">
+    <g id="Group_11099" data-name="Group 11099" transform="translate(0.851)">
+      <path id="Path_3" data-name="Path 3" d="M11.149,0H36.84l21.85,39.6-12.848,23.7Zm4.479,3.506L18.79,1.343l.974,1.915L16.6,5.421Zm34.3,32.682,3.162-2.165.971,1.917L50.9,38.1ZM45.7,28.372l3.113-2.162,1.022,1.917L46.671,30.29Zm-4.234-7.814L44.579,18.4,45.6,20.361l-3.166,2.162Zm-4.282-7.814,3.16-2.163,1.024,1.967L38.2,14.71ZM32.948,4.979l3.164-2.161,1.021,1.914L33.971,6.9Zm8.08,45.312,3.162-2.163.971,1.967-3.114,2.162Zm-4.234-7.813,3.16-2.165.974,1.966-3.113,2.164Zm-4.235-7.766,3.164-2.163.973,1.917L33.534,36.63ZM28.327,26.9l3.164-2.163.973,1.919L29.3,28.814Zm-4.233-7.813,3.162-2.162.975,1.964-3.164,2.163ZM19.86,11.27l3.162-2.163L24,11.073l-3.162,2.163Z" transform="translate(141 322)" fill="#fff" fill-rule="evenodd"/>
+      <path id="Path_4" data-name="Path 4" d="M43.071,0H80.536L61.8,34.254Z" transform="translate(141 322)" fill="#e3071c" fill-rule="evenodd"/>
+    </g>
+    <text id="إنتاجي" transform="translate(226 418)" fill="#fff" font-size="24" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="-62.121" y="0">إنتاجي</tspan></text>
+  </g>
+</svg>
