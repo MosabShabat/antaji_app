@@ -3,13 +3,13 @@ import 'package:antaji_app/constant/const.dart';
 import 'package:antaji_app/features/artists/screens/city_change_screen.dart';
 import 'package:antaji_app/features/artists/screens/portfolio/portfolio_screen.dart';
 
-
 class ArtistsScreen extends StatefulWidget {
   const ArtistsScreen({super.key});
 
   @override
   State<ArtistsScreen> createState() => _ArtistsScreenState();
 }
+
 //mosab shabat
 class _ArtistsScreenState extends State<ArtistsScreen> {
   @override

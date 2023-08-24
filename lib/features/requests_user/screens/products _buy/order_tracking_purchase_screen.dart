@@ -136,7 +136,7 @@ class _OrderTrackingPurchaseScreenState
                       index == 0 || index == 1
                           ? VxDivider(
                               color: blackColor.value,
-                              indent: context.screenWidth / 4,
+                              indent: context.screenWidth / 6.5,
                               endIndent: 0,
                               type: VxDividerType.horizontal,
                               width: 10,
@@ -151,13 +151,15 @@ class _OrderTrackingPurchaseScreenState
                   )
                       .box
                       .height(context.screenHeight / 5)
-                      .width(context.screenWidth / 2.5)
+                      .width(context.screenWidth / 2.7)
                       .make();
                 },
               )
                   .box
                   .height(context.screenHeight / 9)
-                  .width(context.screenWidth)
+                  //.color(greenColor)
+                  .padding(EdgeInsets.symmetric(horizontal: 8))
+                  .width(context.screenWidth / 1.1)
                   .make(),
               20.heightBox,
               theProduct.tr.text

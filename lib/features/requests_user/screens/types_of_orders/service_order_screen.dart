@@ -86,7 +86,7 @@ class _serviceOrderScreenState extends State<serviceOrderScreen> {
             )
                 .box
                 .height(context.screenHeight / 20)
-                .width(context.screenWidth / 7)
+                .width(context.screenWidth / 5)
                 .color(lightColor.value)
                 .rounded
                 .padding(EdgeInsets.all(8))

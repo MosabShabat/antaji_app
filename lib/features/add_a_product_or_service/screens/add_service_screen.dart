@@ -93,7 +93,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
             )
                 .box
                 .height(context.screenHeight / 20)
-                .width(context.screenWidth / 7)
+                .width(context.screenWidth / 5)
                 .color(lightColor.value)
                 .rounded
                 .padding(EdgeInsets.all(8))
@@ -133,7 +133,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                   calendarImage,
                   color: blackColor.value,
                 ),
-                10.widthBox,
+                // 10.widthBox,
                 '${starts.tr}  10/06/2023'
                     .text
                     .fontFamily(regular)

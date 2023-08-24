@@ -41,10 +41,11 @@ class _DeliveryAddressesScreenState extends State<DeliveryAddressesScreen> {
                   .fontFamily(bold)
                   .size(12)
                   .make(),
+              //10.widthBox,
             ],
           )
               .box
-              .width(context.screenWidth / 4)
+              .width(context.screenWidth / 3.8)
               //.color(greenColor)
               .make()
               .onTap(() {
