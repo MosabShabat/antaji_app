@@ -10,7 +10,7 @@ class ArtistsScreen extends StatefulWidget {
   @override
   State<ArtistsScreen> createState() => _ArtistsScreenState();
 }
-
+//mosab shabat
 class _ArtistsScreenState extends State<ArtistsScreen> {
   @override
   Widget build(BuildContext context) {
