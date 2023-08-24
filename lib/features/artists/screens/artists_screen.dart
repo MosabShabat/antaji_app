@@ -17,6 +17,7 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
     return Scaffold(
       backgroundColor: whiteColor.value,
       body: SafeArea(
+        //shabat 2000
         child: ListView(
           children: [
             Padding(
