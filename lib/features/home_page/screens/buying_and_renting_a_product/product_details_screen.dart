@@ -1,6 +1,5 @@
 import 'package:antaji_app/constant/const.dart';
 import '../../../../common/widgets/custom_button.dart';
-import '../../../../common/widgets/small_containers.dart';
 import 'buy_a_product_screen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -130,18 +129,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   .height(context.screenHeight / 2.2)
                   .width(context.screenWidth)
                   .make(),
-              smallContainers(
-                widthSize: 70.0,
-                heightSize: 70.0,
-                image: BGImage,
-              )
-                  .box
-                  .height(80)
-                  .width(context.screenWidth)
-                  .padding(EdgeInsets.only(
-                    right: 16,
-                  ))
-                  .make(),
+              // smallContainers(
+              //   widthSize: 70.0,
+              //   heightSize: 70.0,
+              //   image: BGImage,
+              // )
+              //     .box
+              //     .height(80)
+              //     .width(context.screenWidth)
+              //     .padding(EdgeInsets.only(
+              //       right: 16,
+              //     ))
+              //     .make(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(

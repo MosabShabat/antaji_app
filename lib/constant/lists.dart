@@ -1,28 +1,4 @@
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/constant/strings.dart';
-
-import 'images.dart';
-
-const onboardingImages = [
-  manFilming1,
-  manFilming2,
-  manFilming3,
-  manFilming4,
-];
-
-const onboardingTitleText = [
-  'هل تبحث عن مصور ؟',
-  'اختر الفنان المناسب لك',
-  'تحتاج معدات احترافية؟',
-  'أفضل مواقع التصوير',
-];
-
-const onboardingSubTitleText = [
-  'أكتشف العديد من المصورين المحترفين من حولك',
-  'ابحث عن الأشخاص الموهوبين في مختلف المجالات',
-  'استأجر او اشتري المعدات لإنتاج عمل احترافي',
-  'اختر موقعًا من بين العديد من المواقع المميزة للتصوير',
-];
 
 const ListImagesHome = [
   rentLottieIcon,
@@ -32,16 +8,6 @@ const ListImagesHome = [
 ];
 
 const ListTextSerHome = [
-  rent,
-  BuyingAndSellingVar,
-  Services,
-  FilmingLocationsVar,
-];
-final ListTabSerHome = [
-  // Get.to(
-  //   () => LoginScreen(),
-  //   transition: Transition.rightToLeft,
-  // ),
   rent,
   BuyingAndSellingVar,
   Services,
@@ -160,10 +126,9 @@ const AddServiceText = [
   perHour,
 ];
 
-
- const payMentTypes = [
-    applePay,
-    mada,
-    visa,
-    masterCard,
-  ];
+const payMentTypes = [
+  applePay,
+  mada,
+  visa,
+  masterCard,
+];

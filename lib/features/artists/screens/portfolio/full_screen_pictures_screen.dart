@@ -1,22 +1,24 @@
 import 'package:antaji_app/constant/const.dart';
+import 'package:antaji_app/models/business_artists_model.dart';
 
 class FullScreenPicturesScreen extends StatelessWidget {
-  const FullScreenPicturesScreen({super.key});
+  final List<ImagesModel> data_images;
+  const FullScreenPicturesScreen({super.key, required this.data_images});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blackColor.value ,
+      backgroundColor: blackColor.value,
       appBar: AppBar(
         leading: SizedBox(),
         backgroundColor: Colors.transparent,
         actions: [
           CircleAvatar(
             radius: 15,
-            backgroundColor: whiteColor.value ,
+            backgroundColor: whiteColor.value,
             child: Icon(
               Icons.close,
-              color: blackColor.value ,
+              color: blackColor.value,
             ),
           ).box.make().onTap(() {
             Get.back();
@@ -24,12 +26,13 @@ class FullScreenPicturesScreen extends StatelessWidget {
           30.widthBox,
         ],
       ),
-      body: ListView.builder(
+      body: PageView.builder(
+        reverse: true,
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: data_images.length,
         itemBuilder: (context, index) {
-          return Image.asset(
-            imageCamSta,
+          return Image.network(
+            '${data_images[index].image}',
             width: context.screenWidth,
             fit: BoxFit.contain,
           ).box.make();

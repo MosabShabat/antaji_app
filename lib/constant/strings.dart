@@ -319,14 +319,22 @@ const PackagePrice = "332";
 const PaymentAndSubscriptionWereSuccessful = "333";
 const ProfessionalsPackage = "334";
 const SubscriptionDate = "335";
+const product = "336";
+const thereIsNoInternet = "337";
+const elementText = "338";
+const ThereIsNoDataYet = "339";
+const ProductModification = "340";
+const ClickToEditPhotos = "341";
+const PicturesOfTheSite = "342";
+const ModifyTheSite = "343";
 
 
 
 
 
+//Modify the site
 
-
-//professionals
+//there is no Internet
 
 
 

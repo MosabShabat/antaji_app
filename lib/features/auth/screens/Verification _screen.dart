@@ -1,13 +1,15 @@
+import 'package:antaji_app/features/auth/controller/auth_getx_controller.dart';
 import 'package:antaji_app/features/home/screens/home_screen.dart';
 import '../../../common/widgets/code_text_field.dart';
 import '../../../constant/const.dart';
 import '../../../common/widgets/custom_button.dart';
 
 class VerificationScreen extends StatefulWidget {
-  // final String email;
+  final String phone;
 
   const VerificationScreen({
     super.key,
+    required this.phone,
   });
 
   @override
@@ -137,7 +139,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IDidNot.tr.text.color(blackColor.value).medium.size(16).make(),
+                    IDidNot.tr.text
+                        .color(blackColor.value)
+                        .medium
+                        .size(16)
+                        .make(),
                     TextButton(
                       onPressed: () {},
                       child: Resend.tr.text
@@ -155,12 +161,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   textColor: whiteColor.value,
                   backgroundColor: blackColor.value,
                   borderColor: blackColor.value,
-                  onPressed: () {
-                    Get.offAll(
-                      () => HomeScreen(initialTabIndex: 0),
-                      transition: Transition.rightToLeft,
-                    );
-                  },
+                  onPressed: () async => _performResetVerification(),
                 ).box.height(56).width(context.screenWidth - 40).make(),
                 10.heightBox,
               ],
@@ -194,22 +195,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
   }
 
   Future<void> _resetVerification() async {
-    // Response.Response response = await Get.find<AuthGetxController>().reset(
-    //   email: widget.email,
-    //   code: _code,
-    // );
-    // if (response.status!) {
-    //   Get.to(
-    //     () => NewPasswordScreen(
-    //       email: widget.email,
-    //       code: _code,
-    //     ),
-    //     transition: Transition.downToUp,
-    //   );
-    // }
-    // Get.snackbar("message", response.message!,
-    //     backgroundColor:
-    //         response.status! ? Colors.greenAccent : Colors.redAccent,
-    //     colorText: Colors.white);
+    bool isSuccess = await Get.find<AuthGetxController>().reset(
+      phone: widget.phone,
+      code: _code,
+    );
+    isSuccess
+        ? Get.offAll(
+            () => HomeScreen(
+              initialTabIndex: 0,
+            ),
+            transition: Transition.downToUp,
+          )
+        : Get.snackbar("error", " Something is error");
+   
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "552301582442",
+    "project_id": "antaji-c4654",
+    "storage_bucket": "antaji-c4654.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552301582442:android:73a6433a0df17daae0d213",
+        "android_client_info": {
+          "package_name": "com.example.antaji_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552301582442-9j7s31kcv3polrpicktliuj7s10e1nus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP-edTianaEF_m4JDGJ2jdhPCD77IAeqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552301582442-9j7s31kcv3polrpicktliuj7s10e1nus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

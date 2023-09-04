@@ -1,17 +1,37 @@
+import 'package:antaji_app/features/home_page/controller/home_page_controller.dart';
+import 'package:antaji_app/features/home_page/screens/buying_and_renting_a_product/product_details_add_screen.dart';
+import 'package:antaji_app/models/product_data.dart';
 import '../../../../common/widgets/custom_button.dart';
-import '../../../../constant/const.dart';
 
 class RentScreen extends StatefulWidget {
-  const RentScreen({super.key});
+  final String title;
+  final String url;
+  const RentScreen({super.key, required this.title, required this.url});
 
   @override
   State<RentScreen> createState() => _RentScreenState();
 }
 
 class _RentScreenState extends State<RentScreen> {
-  Future<void> _refreshData() async {
-    // Your refresh logic goes here
+  var controller_home_pag_var = Get.put(HomePageController());
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await controller_home_pag_var.getTypeData(
+        url: widget.url,
+      );
+    });
   }
+
+  Future<void> _refreshData() async {
+    await controller_home_pag_var.getTypeData(
+      refresh: true,
+      url: widget.url,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,84 +39,118 @@ class _RentScreenState extends State<RentScreen> {
       appBar: SameAppBar(context, hint: SearchForProducts.tr),
       body: RefreshIndicator(
         onRefresh: _refreshData,
-        child: ListView(
-          children: [
-            Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      rent.tr.text
-                          .fontFamily(bold)
-                          .color(blackColor.value)
-                          .size(24)
-                          .make(),
-                      20.heightBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          RankingBottomSheet(),
-                          FilterBottomSheet(),
-                        ],
-                      ),
-                      20.heightBox,
-                      GridView.builder(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisExtent: context.height / 3,
-                            mainAxisSpacing: 8,
-                            crossAxisSpacing: 0,
-                          ),
-                          itemCount: 9,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: context.screenWidth / 2.3,
-                                  height: context.screenHeight / 4.5,
-                                  decoration: BoxDecoration(
-                                      color: greenColor,
-                                      image: DecorationImage(
-                                        image: AssetImage(imageCamSta),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
-                                20.heightBox,
-                                Text(
-                                  'سوني ألفا a7S III كاميرا رقمية ميرورليس ',
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    fontFamily: medium,
-                                    fontSize: 12,
-                                    color: blackColor.value,
+        child: Obx(
+          () => controller_home_pag_var.isDataTypeLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : ListView(
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              '${widget.title}'
+                                  .text
+                                  .fontFamily(bold)
+                                  .color(blackColor.value)
+                                  .size(24)
+                                  .make(),
+                              20.heightBox,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  RankingBottomSheet(),
+                                  FilterBottomSheet(),
+                                ],
+                              ),
+                              20.heightBox,
+                              GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisExtent: context.height / 3,
+                                    mainAxisSpacing: 8,
+                                    crossAxisSpacing: 0,
                                   ),
-                                ),
-                                10.heightBox,
-                                '300 ر.س / يوم'
-                                    .text
-                                    .fontFamily(bold)
-                                    .size(16)
-                                    .color(blackColor.value)
-                                    .make(),
-                              ],
-                            )
-                                .box
-                                .height(context.screenHeight / 9)
-                                .color(whiteColor.value)
-                                // .padding(EdgeInsets.all(8))
-                                .margin(EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                ))
-                                .roundedSM
-                                .width(context.screenWidth / 2.5)
-                                .make();
-                          }),
-                    ]))
-          ],
+                                  itemCount: controller_home_pag_var
+                                      .prod_det_type_var.length,
+                                  itemBuilder: (context, index) {
+                                    ProductDetails data =
+                                        controller_home_pag_var
+                                            .prod_det_type_var[index];
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: context.screenWidth / 2.3,
+                                          height: context.screenHeight / 4.5,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    '${data.image!}'),
+                                                fit: BoxFit.cover,
+                                              )),
+                                        ),
+                                        20.heightBox,
+                                        Text(
+                                          '${data.name!}',
+                                          maxLines: 2,
+                                          style: TextStyle(
+                                            fontFamily: medium,
+                                            fontSize: 12,
+                                            color: blackColor.value,
+                                          ),
+                                        ),
+                                        10.heightBox,
+                                        Row(
+                                          children: [
+                                            '${data.price!}  ${data.currency!} /'
+                                                .text
+                                                .fontFamily(bold)
+                                                .size(14)
+                                                .color(blackColor.value)
+                                                .make(),
+                                            '  ${Today.tr}'
+                                                .text
+                                                .fontFamily(regular)
+                                                .size(12)
+                                                .color(blackColor.value)
+                                                .make(),
+                                          ],
+                                        ),
+                                      ],
+                                    )
+                                        .box
+                                        .height(context.screenHeight / 9)
+                                        .color(whiteColor.value)
+                                        // .padding(EdgeInsets.all(8))
+                                        .margin(EdgeInsets.symmetric(
+                                          horizontal: 4,
+                                        ))
+                                        .roundedSM
+                                        .width(context.screenWidth / 2.5)
+                                        .make()
+                                        .onTap(() {
+                                      Get.to(
+                                        () => ProductDetailsAddScreen(
+                                          type: 'products',
+                                          uuid: data.uuid!,
+                                        ),
+                                        transition: Transition.rightToLeft,
+                                      );
+                                    });
+                                  }),
+                            ]))
+                  ],
+                ),
         ),
       ),
     );

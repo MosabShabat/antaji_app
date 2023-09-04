@@ -1,8 +1,11 @@
-import 'package:antaji_app/features/Settings/screens/about_the_application_screen.dart';
-import 'package:antaji_app/features/Settings/screens/language_screen.dart';
-import 'package:antaji_app/features/Settings/screens/settings_screen.dart';
-import 'package:antaji_app/features/Settings/screens/technical_support_screen.dart';
+import 'package:antaji_app/common/widgets/custom_button.dart';
+import 'package:antaji_app/features/settings/screens/about_the_application_screen.dart';
+import 'package:antaji_app/features/settings/screens/language_screen.dart';
+import 'package:antaji_app/features/settings/screens/settings_screen.dart';
+import 'package:antaji_app/features/settings/screens/technical_support_screen.dart';
 import 'package:antaji_app/features/add_a_product_or_service/screens/add_screen.dart';
+import 'package:antaji_app/features/auth/controller/auth_getx_controller.dart';
+import 'package:antaji_app/features/auth/screens/login_screen.dart';
 import 'package:antaji_app/features/conversationss_sessions_notifications/screens/courses_drawer_screen.dart';
 import 'package:antaji_app/features/conversationss_sessions_notifications/screens/notices_screen.dart';
 import 'package:antaji_app/features/delivery_addresses/screens/delivery_addresses_empty_screen.dart';
@@ -11,6 +14,7 @@ import 'package:antaji_app/features/profile_personly/screens/profile_personly_sc
 import 'package:antaji_app/features/requests_user/screens/types_of_orders/order_products_screen.dart';
 import 'package:antaji_app/features/subscription_packages/screens/subscription_packages_screen.dart';
 import 'package:antaji_app/local/my_local_controller.dart';
+import 'package:antaji_app/models/response.dart' as Response;
 
 import '../../constant/const.dart';
 import '../../features/conversationss_sessions_notifications/screens/chat_drawer_screen.dart';
@@ -102,6 +106,55 @@ class _CustomDrawerState extends State<CustomDrawer> {
       );
     }
     if (index == 13) {
+      showModalBottomSheet(
+        backgroundColor: whiteColor.value,
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: context.screenHeight / 3,
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LogOut.tr.text.black.medium.size(16).make(),
+                  20.heightBox,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AreYouSureYou.tr.text.black.bold.size(18).make(),
+                    ],
+                  ),
+                  40.heightBox,
+                  CustomButton(
+                    text: yes.tr,
+                    onPressed: () async {
+                      print('== mos ==');
+                      await _logout();
+
+                      print('=== sha ===');
+                    },
+                    textColor: whiteColor.value,
+                    backgroundColor: Colors.red,
+                    borderColor: Colors.red,
+                  ),
+                  20.heightBox,
+                  CustomButton(
+                    text: no.tr,
+                    onPressed: () {
+                      Get.back();
+                    },
+                    textColor: blackColor.value,
+                    backgroundColor: lightColor.value,
+                    borderColor: lightColor.value,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+
       print('LogOut');
     }
   }
@@ -260,5 +313,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ),
       ),
     );
+  }
+
+  Future<void> _logout() async {
+    print('========== here ===========');
+    Response.Response response = await AuthGetxController().logout();
+    print(response.status);
+    if (response.status!) {
+      Get.offAll(
+        () => LoginScreen(),
+        transition: Transition.downToUp,
+      );
+    }
+    Get.snackbar("message", response.message!,
+        backgroundColor: response.status! ? Colors.green : Colors.red,
+        colorText: Colors.white);
   }
 }

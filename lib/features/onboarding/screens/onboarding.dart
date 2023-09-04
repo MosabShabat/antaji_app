@@ -1,3 +1,4 @@
+import 'package:antaji_app/api/api_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../constant/const.dart';
@@ -13,16 +14,22 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
+  var controller = Get.put(ApiController());
+
+  @override
+  void initState() {
+    controller.getInit();
+    super.initState();
+  }
 
   void _navigateToNextPage() {
     setState(() {});
-    // Check if it's the last image, then do not go to the next page.
-    if (_currentPage == onboardingImages.lastIndex) {
+    if (_currentPage == controller.intros_var.lastIndex) {
       Get.off(
         () => LoginScreen(),
         transition: Transition.downToUp,
       );
-    } else if (_currentPage < onboardingImages.length + 1) {
+    } else if (_currentPage < controller.intros_var.length + 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
@@ -35,7 +42,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       padding: const EdgeInsets.all(8.0),
       child: SmoothPageIndicator(
         controller: _pageController,
-        count: onboardingImages.length,
+        count: controller.intros_var.length,
         effect: ExpandingDotsEffect(
           activeDotColor: Colors.white,
           dotHeight: 7,
@@ -50,107 +57,114 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          PageView.builder(
-            controller: _pageController,
-            scrollDirection: Axis.horizontal,
-            itemCount: onboardingImages.length,
-            itemBuilder: (context, index) {
-              return Container(
-                width: context.screenWidth,
-                height: context.screenHeight,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(onboardingImages[index]),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              );
-            },
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-          ),
-          Positioned(
-            top: 50,
-            left: 12,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Skip.tr.text.bold.size(20).black.make().onTap(() {
-                  Get.off(
-                    () => LoginScreen(),
-                    transition: Transition.downToUp,
-                  );
-                }),
-                SizedBox(
-                  width: context.screenWidth / 1.3,
-                )
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            child: Stack(
-              children: [
-                SvgPicture.asset(
-                  Group118782,
-                  width: context.screenWidth,
-                  height: context.screenHeight / 2.8,
-                ),
-                Positioned(
-                  bottom: context.screenHeight / 22,
-                  //  left: 20,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        onboardingTitleText[_currentPage]
-                            .text
-                            .fontFamily(bold)
-                            .size(30)
-                            .white
-                            .make(),
-                        10.heightBox,
-                        onboardingSubTitleText[_currentPage]
-                            .text
-                            .fontFamily(medium)
-                            .size(14)
-                            .white
-                            .make(),
-                        20.heightBox,
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: context.screenWidth / 4,
-                            ),
-                            buildIndicator(),
-                            // SizedBox(
-                            //   width: context.screenWidth / 2.5,
-                            // ),
-                          ],
+      body: Obx(
+        () => controller.isDataLoading.value
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Stack(
+                children: [
+                  PageView.builder(
+                    controller: _pageController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.intros_var.length,
+                    itemBuilder: (context, index) {
+                      var dataIntro = controller.intros_var[index];
+                      return Container(
+                        width: context.screenWidth,
+                        height: context.screenHeight,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(dataIntro.image!),
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                        20.heightBox,
-                        CustomButton(
-                          text: Continuation.tr,
-                          textColor: Colors.black,
-                          backgroundColor: Colors.white,
-                          borderColor: Colors.white,
-                          onPressed: _navigateToNextPage,
-                        ).box.height(56).width(context.screenWidth - 40).make(),
+                      );
+                    },
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                  ),
+                  Positioned(
+                    top: 50,
+                    left: 12,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Skip.tr.text.bold.size(20).black.make().onTap(() {
+                          Get.off(
+                            () => LoginScreen(),
+                            transition: Transition.downToUp,
+                          );
+                        }),
+                        SizedBox(
+                          width: context.screenWidth / 1.3,
+                        )
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ],
+                  Positioned(
+                    bottom: 0,
+                    child: Stack(
+                      children: [
+                        SvgPicture.asset(
+                          Group118782,
+                          width: context.screenWidth,
+                          height: context.screenHeight / 2.8,
+                        ),
+                        Positioned(
+                          bottom: context.screenHeight / 22,
+                          //  left: 20,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                controller.intros_var[_currentPage]
+                                    .titleTranslate!.text
+                                    .fontFamily(bold)
+                                    .size(20)
+                                    .white
+                                    .make(),
+                                10.heightBox,
+                                controller.intros_var[_currentPage]
+                                    .supTitleTranslate!.text
+                                    .fontFamily(regular)
+                                    .size(14)
+                                    .white
+                                    .make(),
+                                20.heightBox,
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: context.screenWidth / 4,
+                                    ),
+                                    buildIndicator(),
+                                  ],
+                                ),
+                                20.heightBox,
+                                CustomButton(
+                                  text: Continuation.tr,
+                                  textColor: Colors.black,
+                                  backgroundColor: Colors.white,
+                                  borderColor: Colors.white,
+                                  onPressed: _navigateToNextPage,
+                                )
+                                    .box
+                                    .height(56)
+                                    .width(context.screenWidth - 40)
+                                    .make(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }

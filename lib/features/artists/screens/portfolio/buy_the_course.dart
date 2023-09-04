@@ -2,7 +2,7 @@ import 'package:antaji_app/constant/const.dart';
 
 import '../../../../common/widgets/cart_pay_ment.dart';
 import '../../../../common/widgets/custom_button.dart';
-import 'course_details_screen.dart';
+// import 'course_details_screen.dart';
 
 class BuyTheCourseScreen extends StatefulWidget {
   const BuyTheCourseScreen({super.key});
@@ -23,32 +23,13 @@ class _BuyTheCourseScreenState extends State<BuyTheCourseScreen> {
         backgroundColor: blackColor.value ,
         borderColor: blackColor.value ,
         onPressed: () {
-          Get.off(
-            () => CourseDetailsScreen(
-              isPay: true,
-              DoneWid: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 15,
-                    backgroundColor: greenColor,
-                    child: Center(
-                      child: Icon(
-                        Icons.done,
-                        color: whiteColor.value ,
-                      ),
-                    ),
-                  ),
-                  10.widthBox,
-                  BuyingSucceeded.tr.text
-                      .fontFamily(bold)
-                      .size(14)
-                      .color(greenColor)
-                      .make()
-                ],
-              ),
-            ),
-            transition: Transition.rightToLeft,
-          );
+          // Get.off(
+          //   () => CourseDetailsScreen(
+          //     isPay: true,
+          //     DoneWid: ,
+          //   ),
+          //   transition: Transition.rightToLeft,
+          // );
         },
       )
           .box

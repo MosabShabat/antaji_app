@@ -336,8 +336,16 @@ class MyLocal implements Translations {
           "333": "تم الدفع والاشتراك بنجاح",
           "334": "باقة المحترفين",
           "335": "تاريخ الاشتراك",
+          "336": "منتج",
+          "337": "لا يوجد انترنت",
+          "338": "عنصر",
+          "339": "لا يوجد بيانات بعد ",
+          "340": "تعديل المنتج",
+          "341": "اضغط لتعديل الصور",
+          "342": "صور الموقع",
+          "343": "تعديل الموقع",
+          //صور الموقع
 
-          //بحث عن تخصص
           //"أدخل رقم الجوال للتسجيل أو الدخول",
         },
         "en": {
@@ -677,7 +685,14 @@ class MyLocal implements Translations {
           "333": "Payment and subscription were successful",
           "334": "Professionals package",
           "335": "Subscription date",
-
+          "336": "product",
+          "337": "there is no Internet",
+          "338": "element",
+          "339": "There is no data yet",
+          "340": "Product Modification",
+          "341": "Click to edit photos",
+          "342": "Pictures of the site",
+          "343": "Modify the site",
           // تم إرسال رسالتك بنجاح
         }
       };

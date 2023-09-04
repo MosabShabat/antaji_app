@@ -1,5 +1,7 @@
 import 'package:antaji_app/common/widgets/custom_button.dart';
-import 'package:antaji_app/features/add_a_product_or_service/screens/location_photos_screen.dart';
+import 'package:antaji_app/features/add_a_product_or_service/controller/add_controller.dart';
+import 'package:antaji_app/features/add_a_product_or_service/screens/locations_pictures_screen.dart';
+import 'package:antaji_app/features/delivery_addresses/screens/maps_select_screen.dart';
 import '../../../constant/const.dart';
 
 class AddALocationScreen extends StatefulWidget {
@@ -10,6 +12,40 @@ class AddALocationScreen extends StatefulWidget {
 }
 
 class _AddALocationScreenState extends State<AddALocationScreen> {
+  var add_prod_controller = Get.put(AddController());
+  TextEditingController _searchController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _priceController = TextEditingController();
+  TextEditingController _detController = TextEditingController();
+
+  @override
+  void initState() {
+    _searchController = TextEditingController();
+    _nameController = TextEditingController();
+    _priceController = TextEditingController();
+    _detController = TextEditingController();
+
+    super.initState();
+  }
+
+  List<String> selectedItems = [];
+
+  RxBool isSearch = false.obs;
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _nameController.dispose();
+    _priceController.dispose();
+    _detController.dispose();
+    super.dispose();
+  }
+
+  var cat;
+  int? selectedIndex;
+  var CatTitle;
+  var latitude;
+  var longitude;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +94,46 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
           .rounded
           .make()
           .onTap(() {
-        Get.to(
-          () => LocationPhotosScreen(),
-          transition: Transition.rightToLeft,
-        );
+        if (_nameController.text.isNotEmpty &&
+            _priceController.text.isNotEmpty &&
+            selectedItems.isNotEmpty &&
+            latitude != null &&
+            longitude != null &&
+            _detController.text.isNotEmpty) {
+          Get.snackbar(
+            'Success',
+            'All fields are not empty',
+            backgroundColor: greenColor,
+          );
+          Get.to(
+            () => LocationsPicturesScreen(
+              name: _nameController.text,
+              address: 'Mak',
+              category_uuid: selectedItems,
+              details: _detController.text,
+              lat: '${latitude}',
+              lng: '${longitude}',
+              price: _priceController.text,
+            
+           
+            ),
+            transition: Transition.rightToLeft,
+          );
+        } else {
+          print('Some fields are empty');
+          Get.snackbar(
+            'Error',
+            'Some fields are empty',
+            backgroundColor: redColor,
+          );
+        }
+        // Get.to(
+        //   () => LocationPhotosScreen(),
+        //   transition: Transition.rightToLeft,
+        // );
       }),
       backgroundColor: whiteColor.value,
       body: SingleChildScrollView(
-          //  physics: BouncingScrollPhysics(),
           child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -90,6 +158,7 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
             MyTextField(
               Radius: 12.0,
               hintText: theName.tr,
+              controller: _nameController,
               keyboardType: TextInputType.text,
               maxLines: 1,
               obscureText: false,
@@ -112,8 +181,9 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
               children: [
                 MyTextField(
                   Radius: 12.0,
-                  hintText: theName.tr,
-                  keyboardType: TextInputType.text,
+                  hintText: thePrice.tr,
+                  controller: _priceController,
+                  keyboardType: TextInputType.number,
                   maxLines: 1,
                   obscureText: false,
                   readOnly: false,
@@ -146,11 +216,18 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Choose.tr.text
-                    .fontFamily(regular)
-                    .size(14)
-                    .color(blackColor.value)
-                    .make(),
+                CatTitle == null
+                    ? Choose.tr.text
+                        .fontFamily(regular)
+                        .size(14)
+                        .color(blackColor.value)
+                        .make()
+                    : '${CatTitle}'
+                        .text
+                        .fontFamily(regular)
+                        .size(14)
+                        .color(blackColor.value)
+                        .make(),
                 SvgPicture.asset(
                   arrowDownIcon,
                   color: blackColor.value,
@@ -180,10 +257,146 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
                   ),
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   builder: (context) {
-                    return bottomSheetPersonalFile(
-                      title: Category,
-                      searchTitle: SearchForARating,
-                      subTitle: 'كاميرات السينما',
+                    return Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: StatefulBuilder(
+                        builder: (context, setState) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              20.heightBox,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Category.tr.text
+                                      .fontFamily(regular)
+                                      .size(14)
+                                      .align(TextAlign.start)
+                                      .color(blackColor.value)
+                                      .make(),
+                                ],
+                              ),
+                              20.heightBox,
+                              MyTextField(
+                                Radius: 24.0,
+                                readOnly: false,
+                                onSubmitted: (value) {
+                                  setState(() {
+                                    isSearch.value = !isSearch.value;
+                                  });
+                                },
+                                maxLines: 1,
+                                controller: _searchController,
+                                prefixIcon: Icon(
+                                  Icons.search,
+                                  color: blackColor.value,
+                                ),
+                                obscureText: false,
+                                keyboardType: TextInputType.text,
+                                hintText: searchByCategories.tr,
+                              ),
+                              20.heightBox,
+                              FutureBuilder(
+                                future: isSearch.value
+                                    ? add_prod_controller.getCutLocationData(
+                                        url: '?name=${_searchController.text}')
+                                    : add_prod_controller.getCutLocationData(
+                                        url: ''),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  } else if (snapshot.connectionState ==
+                                          ConnectionState.done &&
+                                      snapshot.data != null &&
+                                      snapshot.data!.isNotEmpty) {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: BouncingScrollPhysics(),
+                                      itemCount: snapshot.data!.length,
+                                      itemBuilder: (context, index) {
+                                        var data = snapshot.data![index];
+                                        bool isSelected =
+                                            selectedItems.contains(data.uuid);
+
+                                        return CheckboxListTile(
+                                          activeColor: greenColor,
+                                          title: '${data.nameTranslate}'
+                                              .text
+                                              .fontFamily(regular)
+                                              .size(14)
+                                              .color(blackColor.value)
+                                              .make(),
+                                          value: isSelected,
+                                          onChanged: (bool? newValue) {
+                                            setState(() {
+                                              if (newValue != null) {
+                                                if (newValue) {
+                                                  selectedItems.add(data.uuid);
+                                                } else {
+                                                  selectedItems
+                                                      .remove(data.uuid);
+                                                }
+                                              }
+                                            });
+                                          },
+                                        )
+                                            .box
+                                            .height(context.screenHeight / 18)
+                                            .width(context.screenWidth)
+                                            .margin(EdgeInsets.symmetric(
+                                              vertical: 8,
+                                            ))
+                                            // .color(greenColor)
+                                            .make()
+                                            .onTap(() {
+                                          setState(() {
+                                            selectedIndex = index;
+                                            // CatTitle =
+                                            //     '${snapshot.data![selectedIndex].nameTranslate!}';
+                                            cat = '${data.uuid}';
+                                            Get.back();
+                                          });
+                                        });
+                                      },
+                                    )
+                                        .box
+                                        .height(context.screenHeight / 4.5)
+                                        .make();
+                                  } else {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        ThereIsNoDataYet.tr.text
+                                            .fontFamily(bold)
+                                            .size(20)
+                                            .color(blackColor.value)
+                                            .make(),
+                                      ],
+                                    )
+                                        .box
+                                        .width(context.screenWidth)
+                                        .height(context.screenHeight / 4.3)
+                                        .make();
+                                  }
+                                },
+                              ),
+                            ],
+                          )
+                              .box
+                              .height(context.screenHeight / 2.5)
+                              .width(context.screenWidth)
+                              .color(whiteColor.value)
+                              .make();
+                        },
+                      ),
                     );
                   });
             }),
@@ -197,6 +410,7 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
             MyTextField(
               Radius: 12.0,
               hintText: theDetails.tr,
+              controller: _detController,
               keyboardType: TextInputType.text,
               maxLines: 10,
               obscureText: false,
@@ -241,6 +455,19 @@ class _AddALocationScreenState extends State<AddALocationScreen> {
                     .rounded
                     .color(blackColor.value)
                     .make()
+                    .onTap(() async {
+                  final result = await Get.to<Map<String, dynamic>>(
+                    () => MapsSelectScreen(),
+                    transition: Transition.rightToLeft,
+                  );
+
+                  if (result != null &&
+                      result.containsKey('latitude') &&
+                      result.containsKey('longitude')) {
+                    latitude = result['latitude'];
+                    longitude = result['longitude'];
+                  }
+                })
               ],
             ).box.width(context.screenWidth).make(),
             40.heightBox,

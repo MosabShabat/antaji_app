@@ -1,4 +1,4 @@
-import 'package:antaji_app/features/add_a_product_or_service/screens/add_successfully_screen.dart';
+// import 'package:antaji_app/features/add_a_product_or_service/screens/add_successfully_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import '../../../constant/const.dart';
 
@@ -65,10 +65,10 @@ class _CourseVideosScreenState extends State<CourseVideosScreen> {
           .rounded
           .make()
           .onTap(() {
-        Get.to(
-          () => addSuccessfullyScreen(),
-          transition: Transition.rightToLeft,
-        );
+        // Get.to(
+        //   () => addSuccessfullyScreen(),
+        //   transition: Transition.rightToLeft,
+        // );
       }),
       backgroundColor: whiteColor.value,
       body: SingleChildScrollView(

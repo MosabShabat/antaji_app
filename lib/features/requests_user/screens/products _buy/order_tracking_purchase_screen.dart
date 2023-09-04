@@ -1,6 +1,6 @@
 import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/constant/const.dart';
-import 'package:antaji_app/features/Settings/screens/live_support_screen.dart';
+import 'package:antaji_app/features/settings/screens/live_support_screen.dart';
 import 'package:antaji_app/features/delivery_addresses/screens/edit_delivery_address_screen.dart';
 import 'package:antaji_app/features/professionals/screens/portfolio_professional_screen.dart';
 import 'package:antaji_app/features/requests_user/screens/types_of_orders/order_products_screen.dart';

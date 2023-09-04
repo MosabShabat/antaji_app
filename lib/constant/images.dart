@@ -1,12 +1,5 @@
 const MaskGroup4 = 'assets/images/Mask Group 4.png';
 const Logo = 'assets/images/Logo.svg';
-const manFilming1 =
-    'assets/images/man-filming-with-professional-camera-new-movie.png';
-const manFilming2 =
-    'assets/images/model-looking-photos-camera-while-getting-ready-shoot.png';
-const manFilming3 = 'assets/images/man-filming-with-professional-camera.png';
-const manFilming4 =
-    'assets/images/young-man-working-his-photography-studio.png';
 const Group118782 = 'assets/images/Group 118782.svg';
 const IconPerson = 'assets/images/Icon person.svg';
 const IconPerson1 = 'assets/images/Icon.svg';
@@ -101,8 +94,9 @@ const heartBoldIcon = 'assets/images/heartBoldIcon.svg';
 const BGBlueIcon = 'assets/images/BGBlueIcon.svg';
 const BGGreenIcon = 'assets/images/BGGreenIcon.svg';
 const BGBlueAccentIcon = 'assets/images/BGBlueAccentIcon.svg';
+const video_play_icon = 'assets/images/video_play_icon.svg';
 
-//BGBlueAccentIcon
+//video_play_icon
 
 //===================================================
 //============ json files ======================

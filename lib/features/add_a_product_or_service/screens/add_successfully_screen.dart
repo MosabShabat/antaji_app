@@ -1,12 +1,15 @@
 import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/features/add_a_product_or_service/screens/add_screen.dart';
-import 'package:antaji_app/features/home_page/screens/buying_and_renting_a_product/product_details_screen.dart';
+import 'package:antaji_app/features/home_page/screens/buying_and_renting_a_product/product_details_add_screen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../constant/const.dart';
 
 class addSuccessfullyScreen extends StatefulWidget {
-  const addSuccessfullyScreen({super.key});
+  final String type;
+  final String uuid;
+
+  const addSuccessfullyScreen({super.key, required this.type, required this.uuid});
 
   @override
   State<addSuccessfullyScreen> createState() => _addSuccessfullyScreenState();
@@ -46,8 +49,11 @@ class _addSuccessfullyScreenState extends State<addSuccessfullyScreen> {
                 backgroundColor: blackColor.value,
                 borderColor: blackColor.value,
                 onPressed: () {
-                  Get.to(
-                    () => ProductDetailsScreen(),
+                  Get.off(
+                    () => ProductDetailsAddScreen(
+                      type: widget.type,
+                      uuid: widget.uuid,
+                    ),
                     transition: Transition.rightToLeft,
                   );
                 },

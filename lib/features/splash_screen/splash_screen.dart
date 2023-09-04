@@ -1,3 +1,6 @@
+import 'package:antaji_app/features/home/screens/home_screen.dart';
+import 'package:get_storage/get_storage.dart';
+
 import '../../constant/const.dart';
 import '../onboarding/screens/onboarding.dart';
 
@@ -62,19 +65,20 @@ class _SplashScreenState extends State<SplashScreen>
 
   changeScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      // GetStorage().read(
-      //           'token',
-      //         ) ==
-      //         null
-      //     ?
-      Get.offAll(
-        () => OnboardingScreen(),
-        transition: Transition.fade,
-      );
-      // : Get.offAll(
-      //     () => HomeScreen(),
-      //     transition: Transition.fade,
-      //   );
+      GetStorage().read(
+                'token',
+              ) ==
+              null
+          ? Get.offAll(
+              () => OnboardingScreen(),
+              transition: Transition.fade,
+            )
+          : Get.offAll(
+              () => HomeScreen(
+                initialTabIndex: 0,
+              ),
+              transition: Transition.fade,
+            );
     });
   }
 

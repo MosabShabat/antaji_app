@@ -36,15 +36,22 @@ class _AddProductsScreenState extends State<AddProductsScreen>
                 text: Leasing.tr,
               ),
               Tab(
-                text: Leasing.tr,
+                text: sale.tr,
+                //sale
               ),
             ],
           ),
           TabBarView(
             controller: tabController,
             children: [
-              LeasingScreen(),
-              LeasingScreen(),
+              LeasingScreen(
+                url: 'rent',
+                page: 0,
+              ),
+              LeasingScreen(
+                url: 'sale',
+                page: 1,
+              ),
             ],
           ).box.height(context.screenHeight).make(),
         ],

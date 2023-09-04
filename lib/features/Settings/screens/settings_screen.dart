@@ -1,5 +1,5 @@
 import 'package:antaji_app/features/Settings/screens/Delete_my_account_screen.dart';
-import 'package:antaji_app/features/Settings/screens/privacy_policy_screen.dart';
+import 'package:antaji_app/features/settings/screens/privacy_policy_screen.dart';
 import 'package:antaji_app/features/auth/screens/terms_and_conditions_screen.dart';
 import 'package:flutter/cupertino.dart';
 

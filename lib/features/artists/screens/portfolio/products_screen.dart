@@ -1,8 +1,10 @@
 import 'package:antaji_app/constant/const.dart';
+import 'package:antaji_app/models/users_model.dart';
 import 'leasing_screen.dart';
 
 class productsScreen extends StatefulWidget {
-  const productsScreen({super.key});
+    final UsersModel? data;
+  const productsScreen({super.key, this.data});
 
   @override
   State<productsScreen> createState() => _productsScreenState();
@@ -54,10 +56,16 @@ class _productsScreenState extends State<productsScreen>
               controller: tabController,
               children: [
                 Center(
-                  child: LeasingScreen(),
+                  child: LeasingScreen(
+                    url: '${widget.data!.uuid!}/products/sale',
+                    type: 3,
+                  ),
                 ),
                 Center(
-                  child: LeasingScreen(),
+                  child: LeasingScreen(
+                    url: '${widget.data!.uuid!}/products/rent',
+                    type: 4,
+                  ),
                 ),
               ],
             ).box.height(context.screenHeight / 1.8).make(),

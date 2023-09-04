@@ -1,4 +1,3 @@
-import 'package:antaji_app/features/artists/screens/portfolio/brief_screen.dart';
 import 'package:antaji_app/features/artists/screens/portfolio/courses_screen.dart';
 import 'package:antaji_app/features/artists/screens/portfolio/products_screen.dart';
 
@@ -296,9 +295,10 @@ class _PortfolioProfessionalScreenState
                     Center(
                       child: productsScreen(),
                     ),
-                    Center(
-                      child: BriefScreen(),
-                    ),
+                    Center(child: 'hi'.text.make()
+
+                        // BriefScreen(),
+                        ),
                     Center(
                       child: CoursesScreen(),
                     ),

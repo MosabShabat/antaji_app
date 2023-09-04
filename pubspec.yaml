@@ -46,6 +46,17 @@ dependencies:
   shimmer: ^3.0.0
   syncfusion_flutter_datepicker: ^22.2.10
   dotted_border: ^2.0.0+3
+  http: 
+  url_launcher: ^6.1.0
+  video_player: ^2.7.0
+  google_maps_flutter: ^2.4.0
+  cloud_firestore: ^4.9.0
+  firebase_auth: ^4.8.0
+  firebase_core: ^2.15.1
+  firebase_storage: ^11.2.6
+  google_places_flutter: ^2.0.6
+  image_picker: ^1.0.4
+  multi_image_picker: ^4.8.01
 
 
 

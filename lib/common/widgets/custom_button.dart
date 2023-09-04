@@ -70,7 +70,7 @@ class rowSpBet extends StatelessWidget {
   //   BrowseCategories
 }
 
-TextField MyTextField({
+Widget MyTextField({
   keyboardType,
   controller,
   obscureText,
@@ -79,9 +79,13 @@ TextField MyTextField({
   maxLines,
   readOnly,
   prefixIcon,
+  onSubmitted,
   Radius,
+  initialValue,
 }) {
-  return TextField(
+  return TextFormField(
+    onFieldSubmitted: onSubmitted,
+    initialValue: initialValue,
     readOnly: readOnly,
     keyboardType: keyboardType,
     controller: controller,

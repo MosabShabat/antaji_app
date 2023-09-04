@@ -1,10 +1,11 @@
+import 'package:antaji_app/features/auth/controller/auth_getx_controller.dart';
 import 'package:antaji_app/features/auth/screens/Verification%20_screen.dart';
 import 'package:antaji_app/features/auth/screens/singup_artist_screen.dart';
-import 'package:antaji_app/features/auth/screens/singup_user_screen.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../constant/const.dart';
+import 'package:antaji_app/models/response.dart' as Response;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,18 +16,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _phoneTextController;
-
-  var items = [
-    Icon(
-      Icons.facebook_outlined,
-      color: blackColor.value,
-    ),
-    'G'.text.bold.color(blackColor.value).size(20).make(),
-    Icon(
-      Icons.apple,
-      color: blackColor.value,
-    ),
-  ];
 
   @override
   void initState() {
@@ -51,17 +40,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // Get.lazyPut(() => AuthGetxController());
-
+    Get.put(AuthGetxController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: whiteColor.value,
-      appBar: AppBar(),
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: context.screenHeight / 6,
@@ -92,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               hintText: MobileNumber.tr,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide:  BorderSide(
+                                borderSide: BorderSide(
                                   width: 1,
                                   color: whiteColor.value,
                                 ),
@@ -125,72 +116,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   textColor: whiteColor.value,
                   backgroundColor: blackColor.value,
                   borderColor: blackColor.value,
-                  onPressed: () {
-                    Get.to(
-                      () => VerificationScreen(),
-                      transition: Transition.rightToLeft,
-                    );
-                  },
+                  onPressed: () async => await _performLogin(),
                 ).box.height(56).width(context.screenWidth - 40).make(),
-                100.heightBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 2,
-                        color: greyColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: RegisterViaSocialNetworking.tr.text
-                          .color(blackColor.value)
-                          .fontFamily(medium)
-                          .size(14)
-                          .make(),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 2,
-                        color: greyColor,
-                      ),
-                    ),
-                  ],
+                //   100.heightBox,
+                // 120.heightBox,
+                SizedBox(
+                  height: context.screenHeight / 3,
                 ),
-                20.heightBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        // var SocialData = ControllerProf
-                        //     .socialMediaList_var[index];
-                        return IconButton(
-                          onPressed: () async {
-                            // String url =
-                            //     '${SocialData.link!}';
-                            // await launch(url);
-                          },
-                          icon: items[index],
-                        )
-                            .box
-                            .roundedFull
-                            .height(45)
-                            .width(45)
-                            .margin(EdgeInsets.symmetric(
-                              horizontal: 10,
-                            ))
-                            .alignCenter
-                            .color(lightColor.value)
-                            .make();
-                      },
-                    ).box.height(50).width(context.screenWidth / 2).make()
-                  ],
-                ),
-                120.heightBox,
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -238,7 +171,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .make()
                                         .onTap(() {
                                       Get.to(
-                                        () => SingUpUserScreen(),
+                                        () => SingUpArtistScreen(
+                                          title: user.tr,
+                                          type: 'user',
+                                        ),
                                         transition: Transition.rightToLeft,
                                       );
                                     }),
@@ -258,7 +194,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                           .onTap(() {
                                         //SingUpArtistScreen
                                         Get.to(
-                                          () => SingUpArtistScreen(),
+                                          () => SingUpArtistScreen(
+                                            title: artistPerson.tr,
+                                            type: 'artist',
+                                          ),
                                           transition: Transition.rightToLeft,
                                         );
                                       }),
@@ -290,7 +229,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-          ),
+          )
+              .box
+              .height(context.screenHeight)
+              .width(context.screenWidth)
+              // .color(greenColor)
+              .make(),
         ],
       ),
     );
@@ -306,21 +250,30 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_phoneTextController.text.isNotEmpty) {
       return true;
     }
+    Get.snackbar(
+      'Error',
+      'Pleas Fill the phone number',
+      backgroundColor: redColor.withOpacity(0.5),
+    );
     return false;
   }
 
   Future<void> _login() async {
-    // print('_login');
-    // controller.currentNavIndex.value = 0;
-
-    // bool isSucess = await Get.find<AuthGetxController>().login(
-    //     email: _emailTextController.text,
-    //     password: _passwordTextController.text);
-    // isSucess
-    //     ? Get.offAll(
-    //         () => HomeScreen(),
-    //         transition: Transition.downToUp,
-    //       )
-    //     : Get.snackbar("error", " Something is error");
+    //  _phoneTextController.text = '0595457344';
+    Response.Response response = await Get.find<AuthGetxController>().login(
+      phone: '$CountryId-${_phoneTextController.text}',
+    );
+    if (response.status!) {
+      print('$CountryId-${_phoneTextController.text}');
+      Get.to(
+        () => VerificationScreen(
+          phone: '$CountryId${_phoneTextController.text}',
+        ),
+        transition: Transition.downToUp,
+      );
+    }
+    Get.snackbar("message", response.message!,
+        backgroundColor: response.status! ? Colors.green : Colors.pink,
+        colorText: Colors.white);
   }
 }

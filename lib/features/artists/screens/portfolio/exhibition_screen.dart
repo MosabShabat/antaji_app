@@ -1,9 +1,11 @@
 import 'package:antaji_app/constant/const.dart';
 import 'package:antaji_app/features/artists/screens/portfolio/pictures_screen.dart';
 import 'package:antaji_app/features/artists/screens/portfolio/videos_screen.dart';
+import 'package:antaji_app/models/users_model.dart';
 
 class exhibitionScreen extends StatefulWidget {
-  const exhibitionScreen({super.key});
+    final UsersModel? data;
+  const exhibitionScreen({super.key, this.data});
 
   @override
   State<exhibitionScreen> createState() => _exhibitionScreenState();
@@ -55,10 +57,15 @@ class _exhibitionScreenState extends State<exhibitionScreen>
               controller: tabController,
               children: [
                 Center(
-                  child: picturesScreen(),
+                  child: picturesScreen(
+                    url: '${widget.data!.uuid!}/business/images',
+                  ),
                 ),
                 Center(
-                  child: videosScreen(),
+                  child: videosScreen(
+                        url: '${widget.data!.uuid!}/business/videos',
+                        uuid: widget.data!.uuid!,
+                  ),
                 ),
               ],
             ).box.height(context.screenHeight / 1.8).make(),

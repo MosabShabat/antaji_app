@@ -1,5 +1,4 @@
 import 'package:antaji_app/features/add_a_product_or_service/screens/add_a_new_product_tap_bar_screen.dart';
-import 'package:antaji_app/features/add_a_product_or_service/screens/product_pictures_screen.dart';
 import '../../../constant/const.dart';
 
 class AddANewProductScreen extends StatefulWidget {
@@ -50,29 +49,6 @@ class _AddANewProductScreenState extends State<AddANewProductScreen>
               .make()
         ],
       ),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Continuation.tr.text
-              .fontFamily(bold)
-              .color(whiteColor.value)
-              .size(18)
-              .make(),
-        ],
-      )
-          .box
-          .height(context.screenHeight / 16)
-          .width(context.screenWidth)
-          .margin(EdgeInsets.symmetric(vertical: 12, horizontal: 20))
-          .color(blackColor.value)
-          .rounded
-          .make()
-          .onTap(() {
-        Get.to(
-          () => ProductPicturesScreen(),
-          transition: Transition.rightToLeft,
-        );
-      }),
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
@@ -114,8 +90,12 @@ class _AddANewProductScreenState extends State<AddANewProductScreen>
               TabBarView(
                 controller: tabController,
                 children: [
-                  addANewProductTapBarScreen(),
-                  addANewProductTapBarScreen(),
+                  addANewProductTapBarScreen(
+                    type: 'rent',
+                  ),
+                  addANewProductTapBarScreen(
+                    type: 'sale',
+                  ),
                 ],
               ).box.height(context.screenHeight / 1.3).make(),
             ],

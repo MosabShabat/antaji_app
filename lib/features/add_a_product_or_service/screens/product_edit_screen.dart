@@ -1,12 +1,10 @@
-import 'package:antaji_app/common/widgets/custom_button.dart';
-import 'package:antaji_app/features/add_a_product_or_service/screens/add_screen.dart';
-import 'package:antaji_app/features/add_a_product_or_service/screens/add_successfully_screen.dart';
 import 'package:antaji_app/features/add_a_product_or_service/screens/product_edit_rent_screen.dart';
-
 import '../../../constant/const.dart';
 
 class ProductEditScreen extends StatefulWidget {
-  const ProductEditScreen({super.key});
+  final String uuid;
+  final int page;
+  const ProductEditScreen({super.key, required this.uuid, required this.page});
 
   @override
   State<ProductEditScreen> createState() => _ProductEditScreenState();
@@ -17,7 +15,8 @@ class _ProductEditScreenState extends State<ProductEditScreen>
   late TabController tabController;
   @override
   void initState() {
-    tabController = TabController(length: 2, vsync: this, initialIndex: 0);
+    tabController =
+        TabController(length: 2, vsync: this, initialIndex: widget.page);
 
     super.initState();
   }
@@ -53,144 +52,6 @@ class _ProductEditScreenState extends State<ProductEditScreen>
               .make()
         ],
       ),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              saveText.tr.text
-                  .fontFamily(regular)
-                  .size(14)
-                  .color(whiteColor.value)
-                  .make(),
-            ],
-          )
-              .box
-              .rounded
-              .padding(EdgeInsets.symmetric(
-                horizontal: 12,
-              ))
-              .color(blackColor.value)
-              .height(context.screenHeight / 8)
-              .width(context.screenWidth / 2.3)
-              .make()
-              .onTap(() {
-            Get.to(
-              () => addSuccessfullyScreen(),
-              transition: Transition.rightToLeft,
-            );
-          }),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              deleteText.tr.text
-                  .fontFamily(regular)
-                  .size(14)
-                  .color(whiteColor.value)
-                  .make(),
-            ],
-          )
-              .box
-              .height(context.screenHeight / 15)
-              .width(context.screenWidth / 2.3)
-              .rounded
-              .padding(EdgeInsets.symmetric(
-                horizontal: 12,
-              ))
-              .color(redColor)
-              .make()
-              .onTap(() {
-            showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                backgroundColor: whiteColor.value,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                builder: (context) {
-                  return Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        20.heightBox,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            DeleteTheProduct.tr.text
-                                .fontFamily(regular)
-                                .size(14)
-                                .align(TextAlign.start)
-                                .color(blackColor.value)
-                                .make(),
-                          ],
-                        ),
-                        20.heightBox,
-                        DoYouWantToDeleteTheProduct.tr.text
-                            .fontFamily(bold)
-                            .size(20)
-                            .color(blackColor.value)
-                            .make(),
-                        20.heightBox,
-                        ThisStepCannotBeUndone.tr.text
-                            .fontFamily(regular)
-                            .size(14)
-                            .color(blackColor.value)
-                            .make(),
-                        20.heightBox,
-                        CustomButton(
-                          text: YesDelete.tr,
-                          textColor: whiteColor.value,
-                          backgroundColor: redColor,
-                          borderColor: redColor,
-                          onPressed: () {
-                            Get.off(
-                              () => AddScreen(),
-                              transition: Transition.rightToLeft,
-                            );
-                          },
-                        )
-                            .box
-                            .height(100)
-                            .width(context.screenWidth - 40)
-                            .padding(EdgeInsets.all(20))
-                            .make(),
-                        CustomButton(
-                          text: no.tr,
-                          textColor: blackColor.value,
-                          backgroundColor: lightColor.value,
-                          borderColor: lightColor.value,
-                          onPressed: () {
-                            Get.back();
-                          },
-                        )
-                            .box
-                            .height(100)
-                            .width(context.screenWidth - 40)
-                            .padding(EdgeInsets.all(20))
-                            .make(),
-                      ],
-                    )
-                        .box
-                        .height(context.screenHeight / 2.5)
-                        .width(context.screenWidth)
-                        .color(whiteColor.value)
-                        .make(),
-                  );
-                });
-          })
-        ],
-      )
-          .box
-          .height(context.screenHeight / 16)
-          .width(context.screenWidth)
-          .margin(EdgeInsets.symmetric(vertical: 12, horizontal: 20))
-          .make(),
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
@@ -198,7 +59,7 @@ class _ProductEditScreenState extends State<ProductEditScreen>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AddANewProduct.tr.text
+              ProductModification.tr.text
                   .fontFamily(bold)
                   .color(blackColor.value)
                   .size(24)
@@ -232,8 +93,14 @@ class _ProductEditScreenState extends State<ProductEditScreen>
               TabBarView(
                 controller: tabController,
                 children: [
-                  ProductEditRent(),
-                  ProductEditRent(),
+                  ProductEditRent(
+                    type: 'rent',
+                    uuid: widget.uuid,
+                  ),
+                  ProductEditRent(
+                    type: 'sale',
+                    uuid: widget.uuid,
+                  ),
                 ],
               ).box.height(context.screenHeight / 1.3).make(),
             ],

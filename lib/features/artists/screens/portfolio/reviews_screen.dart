@@ -1,7 +1,9 @@
 import 'package:antaji_app/constant/const.dart';
+import 'package:antaji_app/models/users_model.dart';
 
 class ReviewsScreen extends StatefulWidget {
-  const ReviewsScreen({super.key});
+  final List<Reviews> rev_data;
+  const ReviewsScreen({super.key, required this.rev_data});
 
   @override
   State<ReviewsScreen> createState() => _ReviewsScreenState();
@@ -19,7 +21,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              '${reviews.tr}  (20)'
+              '${reviews.tr}  (${widget.rev_data.length} )'
                   .text
                   .fontFamily(bold)
                   .size(24)
@@ -27,15 +29,18 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                   .make(),
               20.heightBox,
               ListView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
-                itemCount: 5,
+                itemCount: widget.rev_data.length,
                 itemBuilder: (context, index) {
+                  var data = widget.rev_data[index];
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage(UserImage),
+                        backgroundImage: NetworkImage('${data.userImage}'),
                       ),
                       10.widthBox,
                       Column(
@@ -44,14 +49,14 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                         children: [
                           Row(
                             children: [
-                              'محمد خالد'
+                              '${data.userName}'
                                   .text
                                   .fontFamily(bold)
                                   .size(14)
                                   .color(blackColor.value)
                                   .make(),
                               10.widthBox,
-                              '.  منذ 4 أيام'
+                              '.   ${data.timeAgo} '
                                   .text
                                   .fontFamily(regular)
                                   .size(12)
@@ -61,7 +66,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                           ),
                           Container(
                             child: Text(
-                              ' كل شيء سار على نحو سلس وبسيط. شكراً جزيلاً! ',
+                              '${data.title}',
                               maxLines: 2,
                               style: TextStyle(
                                 fontFamily: regular,
@@ -91,10 +96,6 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                       .make();
                 },
               )
-                  .box
-                  .height(context.screenHeight)
-                  .width(context.screenWidth)
-                  .make()
             ],
           ),
         ),

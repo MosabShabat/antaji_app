@@ -1,5 +1,5 @@
-import 'package:antaji_app/features/Settings/screens/connect_with_us_screen.dart';
-import 'package:antaji_app/features/Settings/screens/live_support_screen.dart';
+import 'package:antaji_app/features/settings/screens/connect_with_us_screen.dart';
+import 'package:antaji_app/features/settings/screens/live_support_screen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../constant/const.dart';
