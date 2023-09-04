@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:antaji_app/common/widgets/custom_button.dart';
 import 'package:antaji_app/features/add_a_product_or_service/controller/add_controller.dart';
 import 'package:antaji_app/features/add_a_product_or_service/screens/add_screen.dart';
 import 'package:antaji_app/features/add_a_product_or_service/screens/add_successfully_screen.dart';
 import 'package:antaji_app/features/auth/controller/auth_getx_controller.dart';
 import 'package:antaji_app/features/delivery_addresses/screens/maps_select_screen.dart';
-import 'package:antaji_app/models/edit_location_model.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -252,8 +250,8 @@ class _EditLocationScreenState extends State<EditLocationScreen> {
           for (var i = 0;
               i < add_controller.edit_location_model_var!.item!.images!.length;
               i++) {
-            selectedImages.add(add_controller
-                .edit_location_model_var!.item!.images![i].attachment!);
+            selectedImages
+                .add(add_controller.edit_location_model_var!.item!.images![i]);
           }
           // selectedImages =
           //     add_controller.edit_location_model_var!.item!.images!;
@@ -609,7 +607,7 @@ class _EditLocationScreenState extends State<EditLocationScreen> {
                       print(selectedImages.length);
                       var img_data;
 
-                      index == 0 ? "" : img_data = selectedImages[index - 1];
+                      index == 0 ? "" : img_data = selectedImages[index - 1].ar;
                       // print(selectedImages[3].uuid);
                       return index == 0
                           ? DottedBorder(
@@ -650,11 +648,13 @@ class _EditLocationScreenState extends State<EditLocationScreen> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12)),
                                     image: DecorationImage(
-                                      image: ResizeImage.resizeIfNeeded(1024,
-                                          null, FileImage(File('${img_data}'
-                                              //.to.file!.path
+                                      image: NetworkImage('url'),
+                                      
+                                      // ResizeImage.resizeIfNeeded(1024,
+                                      //     null, FileImage(File('${img_data}'
+                                      //         //.to.file!.path
 
-                                              ))),
+                                      //         ))),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
